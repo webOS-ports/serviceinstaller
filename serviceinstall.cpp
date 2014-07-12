@@ -79,7 +79,7 @@ static string getPrivateEndpointDirectory(string root)
 static void generateEndpoint(string id, string serviceDirectory, string endpointDirectory)
 {
 	string line;
-	string destinationPath = endpointDirectory + "/" + id;
+	string destinationPath = endpointDirectory + "/" + id + ".service";
 	DIR *d;
 
 	if ((d=opendir(endpointDirectory.c_str())) == NULL) {
@@ -108,7 +108,7 @@ static void generateEndpoint(string id, string serviceDirectory, string endpoint
 
 static void deleteEndpoint(string id, string endpointDirectory)
 {
-	string destinationPath = endpointDirectory + "/" + id;
+	string destinationPath = endpointDirectory + "/" + id + ".service";
 	if (fexists(destinationPath)) {
 		DBG("Removing %s", destinationPath.c_str());
 		unlink(destinationPath.c_str());
